@@ -34,7 +34,7 @@ try:
         print("No campaigns found for yesterday. The file has not been altered.")  # Message if no campaigns were returned
     else:
         print(f"Total campaigns from yesterday: {len(campaigns)}")  # Print the number of campaigns found
-        output_filename = "mailchimp_campaigns_from_2025.json"  # Define the output file name
+        output_filename = "mailchimp_campaigns.json"  # Define the output file name
         with open(output_filename, "w", encoding="utf-8") as f:  # Open the file in write mode with UTF-8 encoding
             json.dump(campaigns, f, indent=2)  # Write the campaigns data to the file in JSON format, indented for readability
 
