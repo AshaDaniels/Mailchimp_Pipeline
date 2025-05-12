@@ -11,12 +11,12 @@ api_key = os.getenv('MAILCHIMP_API_KEY')  # Retrieves the Mailchimp API key from
 
 # === STATIC DATES ===
 # This script will only collect dates statitcally, another script will be run to add new daily info
-today_str = "2025-05-12"
+yesterday_str = "2025-05-11"
 start_of_year_str = "2025-01-01"
 
 # Create date-time strings for API query filters
 since_create_time = start_of_year_str + "T00:00:00+00:00"
-before_create_time = today_str + "T23:59:59+00:00"
+before_create_time = yesterday_str + "T23:59:59+00:00"
 
 # # UNNECESSARY Pagination setup
 # count = 1000  # Number of campaigns to fetch per API call
