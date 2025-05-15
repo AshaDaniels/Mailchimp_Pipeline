@@ -1,30 +1,75 @@
-Project 1: 📧 Mailchimp Campaign Data Extractor
+# Project 1: 📧 Mailchimp Campaign Data Extractor
 
-description: >
-  Scripts to extract Mailchimp campaign data using the Mailchimp Marketing API.
-  Two separate scripts are included:
-  - 📦 One for a full historical load of all campaigns
-  - 🕒 One for daily incremental loads based on the previous day's date
+## Overview
+Scripts to extract Mailchimp campaign data using the Mailchimp Marketing API. This project includes two distinct scripts:
+- 📦 **Full Load:** Extract all historical campaign data
+- 🕒 **Incremental Load:** Extract only campaigns created on the previous day
 
-steps:
-  - 🔐 Load environment variables using dotenv to retrieve the API key
-  - ⚙️ Set up the Mailchimp client with the API key
-  - 📅 Define date boundaries for campaign filtering
-  - 📥 For the full load:
-      - 🔄 Use pagination to retrieve all campaigns before a given date (yesterday)
-      - ➕ Append campaigns across pages and write the result to a JSON file
-  - 📈 For the incremental load:
-      - ⏱️ Fetch only campaigns created on the previous day using since/before timestamps
-      - 💾 Save the filtered results to the same JSON file if campaigns are found
-  - 📊 Print summaries of actions taken or if no campaigns were found
-  - ❌ Catch and print errors from the Mailchimp API
+---
 
-scripts:
-  - `mailchimp_api.py` 🧹: Fetches all campaigns prior to yesterday (for full data loads)
-  - `mailchimp_api_incremental.py` 🔁: Fetches campaigns created only yesterday (to be run daily)
+## 1. Setting Up the Environment
 
-output:
-  - `mailchimp_campaigns.json` 📄: JSON file containing campaign data retrieved from the API
+### Objective
+Configure the necessary environment and retrieve API keys to connect to the Mailchimp Marketing API.
+
+### Steps
+1. Install required Python dependencies:
+   - `requests`
+   - `python-dotenv`
+2. Load environment variables using the `dotenv` library to retrieve the API key and other credentials.
+3. Set up the Mailchimp client using the loaded API key.
+
+---
+
+## 2. Full Campaign Data Extraction
+
+### Objective
+Fetch all campaign data up to the current date and save it to a JSON file.
+
+### Steps
+1. Define a date boundary (`yesterday`) to limit the scope of the data.
+2. Use the Mailchimp API to retrieve campaigns:
+   - 🔄 Implement pagination logic to fetch all campaigns in batches.
+   - ➕ Append data across pages until all campaigns are retrieved.
+3. Save the resulting data to a JSON file (`mailchimp_campaigns.json`).
+
+---
+
+## 3. Incremental Campaign Data Extraction
+
+### Objective
+Fetch only campaigns created on the previous day for daily updates.
+
+### Steps
+1. Define the date range (`since` and `before`) for the previous day.
+2. Fetch campaigns matching the date range using the Mailchimp API.
+3. Save the incremental data to the existing JSON file (`mailchimp_campaigns.json`), appending if necessary.
+4. If no campaigns are found, log an appropriate message.
+
+---
+
+## 4. Error Handling and Logging
+
+### Objective
+Ensure the script handles errors gracefully and provides clear feedback.
+
+### Steps
+1. Wrap API requests in `try/except` blocks to catch errors.
+2. Log errors and print summaries of successful or failed actions.
+
+---
+
+## Output
+
+- `mailchimp_campaigns.json` 📄: A JSON file containing the extracted campaign data.
+
+---
+
+## Scripts
+
+- **`mailchimp_api.py`** 🧹: Fetches all historical campaigns before yesterday (for full data loads).
+- **`mailchimp_api_incremental.py`** 🔁: Fetches campaigns created on the previous day (to be run daily).
+
 
 Project 2: 📧 Mailchimp Loading Plan via Python
 
