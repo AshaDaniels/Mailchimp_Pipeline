@@ -71,7 +71,7 @@ Ensure the script handles errors gracefully and provides clear feedback.
 - **`mailchimp_api_incremental.py`** 🔁: Fetches campaigns created on the previous day (to be run daily).
 
 
-Project 2: 📧 Mailchimp Loading Plan via Python
+# Project 2: 📧 Mailchimp Loading Plan via Python
 
 ## Overview
 This README outlines the steps required to set up, modify, and test a Mailchimp data loading plan using Python and AWS S3.
