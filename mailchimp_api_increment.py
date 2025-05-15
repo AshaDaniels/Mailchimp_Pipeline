@@ -1,3 +1,6 @@
+# For the full load script, I wanted to retrieve every campaign Mailchimp had on record up to yesterday. 
+# The API supports pagination, so I used a loop to handle offset-based paging, fetching 1000 campaigns at a time:
+
 # Load libraries
 from dotenv import load_dotenv  # For loading environment variables from a .env file
 import os  # For accessing environment variables and file system operations
