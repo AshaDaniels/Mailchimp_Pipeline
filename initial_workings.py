@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 from os.path import isfile, join
 from modules.upload import upload_data
+from modules.mailchimp_api import download_data
 
 # Load environment variables from .env file
 load_dotenv()
@@ -12,12 +13,16 @@ aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
 aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
 bucket_name = os.getenv('BUCKET_NAME')
 bucket_file_path = os.getenv('BUCKET_FILE_PATH')
+api_key = os.getenv('MAILCHIMP_API_KEY')
 
 # Define the output folder
 output_folder = 'json_data'
 
 # Ensure the folder exists
 os.makedirs(output_folder, exist_ok=True)
+
+# Download the data
+download_data(api_key, output_folder)
 
 # Get the list of files in the output folder
 onlyfiles = [f for f in os.listdir(output_folder) if isfile(join(output_folder, f))]
