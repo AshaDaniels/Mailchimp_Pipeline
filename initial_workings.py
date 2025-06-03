@@ -16,6 +16,6 @@ onlyfiles = [f for f in os.listdir(output_folder) if isfile(join(output_folder, 
 
 for file in onlyfiles:
     file_name = output_folder + '/' + file
-    bucket_file_name = bucket_file_path + '/campaign/' + file
+    bucket_file_name = bucket_file_path + 'campaign/' + file
     upload_data(aws_access_key_id, aws_secret_access_key, file_name, bucket_name, bucket_file_name)
     print(file_name)
